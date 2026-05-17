@@ -5,6 +5,7 @@ import { GlowButton } from '@/app/components/nebula/glow-button'
 import { GradientText } from '@/app/components/nebula/gradient-text'
 import { motion } from 'framer-motion'
 import { NebulaLogo } from '@/app/components/nebula/nebula-logo'
+import { FloatingShipLogo } from '@/app/components/nebula/floating-ship-logo'
 import { Typewriter } from 'react-simple-typewriter'
 import { HiArrowNarrowDown } from 'react-icons/hi'
 
@@ -32,16 +33,17 @@ export const NebulaHero = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="relative mb-8 animate-float"
         >
-          <NebulaLogo
-            src="/images/logonebula.png"
-            alt="Nebula CLW - Cloud Log Web"
-            width={420}
-            height={420}
-            priority
-            wrapperClassName="w-[280px] sm:w-[360px] lg:w-[420px]"
-          />
+          <FloatingShipLogo className="relative mb-8">
+            <NebulaLogo
+              src="/images/logonebula.png"
+              alt="Nebula CLW - Cloud Log Web"
+              width={420}
+              height={420}
+              priority
+              wrapperClassName="w-[280px] sm:w-[360px] lg:w-[420px]"
+            />
+          </FloatingShipLogo>
         </motion.div>
 
         <motion.div

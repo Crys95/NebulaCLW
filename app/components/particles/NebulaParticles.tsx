@@ -29,10 +29,12 @@ export const NebulaParticles = () => {
           interactivity: {
             events: {
               onHover: { enable: true, mode: 'grab' },
+              onClick: { enable: true, mode: 'push' },
               resize: true,
             },
             modes: {
-              grab: { distance: 140, links: { opacity: 0.5 } },
+              grab: { distance: 160, links: { opacity: 0.55 } },
+              push: { quantity: 4 },
             },
           },
           particles: {
