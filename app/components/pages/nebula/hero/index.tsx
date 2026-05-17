@@ -8,6 +8,12 @@ import { NebulaLogo } from '@/app/components/nebula/nebula-logo'
 import { Typewriter } from 'react-simple-typewriter'
 import { HiArrowNarrowDown } from 'react-icons/hi'
 
+const HERO_TITLE_CLASS =
+  'font-display w-full min-w-0 max-w-full text-2xl font-semibold leading-tight break-words sm:text-4xl lg:text-5xl'
+
+/** Frase mais longa do typewriter — define a altura reservada do título. */
+const LONGEST_TYPEWRITER_PHRASE = 'criam novas possibilidades.'
+
 export const NebulaHero = () => {
   return (
     <section
@@ -21,7 +27,7 @@ export const NebulaHero = () => {
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
       />
 
-      <div className="container relative z-10 flex flex-col items-center text-center">
+      <div className="container relative z-10 flex w-full min-w-0 flex-col items-center text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -49,30 +55,41 @@ export const NebulaHero = () => {
           Cloud · Log · Web
         </motion.p>
 
-        <motion.h1
+        <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.45, duration: 0.6 }}
-          className="font-display text-2xl sm:text-4xl lg:text-5xl font-semibold max-w-3xl leading-tight"
+          className="relative grid w-full min-w-0 max-w-full"
         >
-          <span className="text-gray-100">Desenvolvemos sites que </span>
-          <GradientText as="span" className="inline">
-            <Typewriter
-              words={[
-                'expandem seu universo.',
-                'nascem da inovação.',
-                'criam novas possibilidades.',
-                'elevam sua marca.',
-              ]}
-              loop
-              cursor
-              cursorStyle="|"
-              typeSpeed={70}
-              deleteSpeed={45}
-              delaySpeed={2200}
-            />
-          </GradientText>
-        </motion.h1>
+          <p
+            className={`${HERO_TITLE_CLASS} col-start-1 row-start-1 invisible pointer-events-none select-none`}
+            aria-hidden
+          >
+            <span>Desenvolvemos sites que </span>
+            <span className="inline-block max-w-full">
+              {LONGEST_TYPEWRITER_PHRASE}
+            </span>
+          </p>
+          <h1 className={`${HERO_TITLE_CLASS} col-start-1 row-start-1`}>
+            <span className="text-gray-100">Desenvolvemos sites que </span>
+            <GradientText as="span" className="inline-block max-w-full align-top">
+              <Typewriter
+                words={[
+                  'expandem seu universo.',
+                  'nascem da inovação.',
+                  'criam novas possibilidades.',
+                  'elevam sua marca.',
+                ]}
+                loop
+                cursor
+                cursorStyle="|"
+                typeSpeed={70}
+                deleteSpeed={45}
+                delaySpeed={2200}
+              />
+            </GradientText>
+          </h1>
+        </motion.div>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
