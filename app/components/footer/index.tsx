@@ -4,7 +4,7 @@ export const Footer = () => {
   return (
     <footer className="w-full py-8 flex flex-col sm:flex-row items-center justify-center gap-4 bg-nebula-navy border-t border-purple-500/10">
       <NebulaLogo
-        src="/images/nebulalogo.jpeg"
+        src="/images/logonebula.png"
         alt="Nebula CLW"
         width={32}
         height={32}

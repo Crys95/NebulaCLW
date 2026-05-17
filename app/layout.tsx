@@ -30,11 +30,11 @@ export const metadata: Metadata = {
     'Nebula CLW — Cloud Log Web. Criamos sites profissionais com tecnologia futurista, inovação e design que expande seu universo digital.',
   icons: {
     icon: [
-      { url: '/images/nebulalogo.jpeg', type: 'image/jpeg' },
+      { url: '/images/logonebula.png', type: 'image/png' },
       { url: '/favicon.svg', type: 'image/svg+xml' },
     ],
-    apple: '/images/nebulalogo.jpeg',
-    shortcut: '/images/nebulalogo.jpeg',
+    apple: '/images/logonebula.png',
+    shortcut: '/images/logonebula.png',
   },
   keywords: [
     'desenvolvimento de sites',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title: 'Nebula CLW | Desenvolvimento de Sites',
     description:
       'Sites que nascem da inovação e expandem como o universo. Cloud Log Web.',
-    images: ['/images/nebulatexto.jpeg'],
+    images: ['/images/nebulasublog.png'],
   },
 }
 

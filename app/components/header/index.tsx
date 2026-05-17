@@ -30,7 +30,7 @@ export const Header = () => {
           <NebulaLogo
             width={48}
             height={48}
-            src="/images/nebulalogo.jpeg"
+            src="/images/logonebula.png"
             alt="Nebula CLW"
             wrapperClassName="w-10 h-10 sm:w-12 sm:h-12 shrink-0"
             className="max-h-full"

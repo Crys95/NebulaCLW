@@ -34,26 +34,15 @@ export const NebulaHero = () => {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="relative mb-8 animate-float"
         >
-          <div className="absolute inset-0 blur-3xl bg-purple-600/30 rounded-full scale-110 pointer-events-none" />
           <NebulaLogo
-            src="/images/nebulatexto.jpeg"
+            src="/images/logonebula.png"
             alt="Nebula CLW - Cloud Log Web"
             width={420}
             height={420}
             priority
             wrapperClassName="w-[280px] sm:w-[360px] lg:w-[420px]"
-            className="relative shadow-nebula-glow"
           />
         </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          className="font-mono text-sm sm:text-base text-cyan-400/90 tracking-widest uppercase mb-4"
-        >
-          Cloud · Log · Web
-        </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}

@@ -15,7 +15,7 @@ export const NebulaAbout = () => {
         viewport={{ once: true }}
       />
 
-      <motion.div className="container relative grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div className="container relative grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <div>
           <SectionTitles
             subtitle="sobre"
@@ -58,27 +58,15 @@ export const NebulaAbout = () => {
           transition={{ duration: 0.7 }}
           className="flex justify-center"
         >
-          <motion.div
-            className="relative"
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: 'spring', stiffness: 200 }}
-          >
-            <motion.div
-              className="absolute -inset-4 rounded-full bg-nebula-gradient opacity-20 blur-2xl"
-              animate={{ scale: [1, 1.05, 1], opacity: [0.15, 0.25, 0.15] }}
-              transition={{ duration: 5, repeat: Infinity }}
-            />
-            <NebulaLogo
-              src="/images/nebulalogo.jpeg"
-              alt="Logo Nebula CLW"
-              width={400}
-              height={400}
-              wrapperClassName="w-full max-w-[380px]"
-              className="relative shadow-nebula-soft"
-            />
-          </motion.div>
+          <NebulaLogo
+            src="/images/nebulasublog.png"
+            alt="Nebula CLW"
+            width={400}
+            height={400}
+            wrapperClassName="w-full max-w-[380px]"
+          />
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   )
 }
