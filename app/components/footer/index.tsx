@@ -6,10 +6,10 @@ export const Footer = () => {
       <NebulaLogo
         src="/images/logonebula.png"
         alt="Nebula CLW"
-        width={32}
-        height={32}
-        wrapperClassName="w-8 h-8"
-        className="max-h-full"
+        width={48}
+        height={48}
+        wrapperClassName="h-10 w-10 shrink-0 sm:h-11 sm:w-11"
+        className="h-full w-full object-contain"
       />
       <span className="text-sm text-gray-500 font-mono text-center">
         © {new Date().getFullYear()}{' '}
