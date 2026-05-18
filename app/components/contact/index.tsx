@@ -4,10 +4,18 @@ import { SectionTitles } from '../section-title'
 import { TbBrandWhatsapp, TbMail } from 'react-icons/tb'
 import { motion } from 'framer-motion'
 import { GlowButton } from '../nebula/glow-button'
+import { useLanguage } from '@/app/contexts/language-context'
 
 export const ContactForm = () => {
+  const { locale, t } = useLanguage()
+
+  const whatsappHref =
+    'https://wa.me/5511999999999?text=' +
+    encodeURIComponent(t.contact.whatsappMessage)
+
   return (
     <section
+      key={locale}
       id="contato"
       className="py-20 px-6 md:py-32 flex items-center justify-center relative overflow-hidden"
     >
@@ -20,8 +28,8 @@ export const ContactForm = () => {
 
       <div className="w-full max-w-[520px] mx-auto relative z-10">
         <SectionTitles
-          subtitle="contato"
-          titlte="Vamos criar algo extraordinário?"
+          subtitle={t.contact.subtitle}
+          titlte={t.contact.title}
           className="items-center text-center"
         />
 
@@ -31,8 +39,7 @@ export const ContactForm = () => {
           viewport={{ once: true }}
           className="mt-4 text-gray-400 text-center text-sm sm:text-base"
         >
-          Conte-nos sobre seu projeto. Respondemos com a mesma energia de uma
-          nebulosa em expansão.
+          {t.contact.description}
         </motion.p>
 
         <motion.div
@@ -42,12 +49,9 @@ export const ContactForm = () => {
           transition={{ delay: 0.2 }}
           className="mt-10 flex flex-col items-center gap-6"
         >
-          <GlowButton
-            href="https://wa.me/5511999999999?text=Olá%20Nebula%20CLW!%20Gostaria%20de%20saber%20mais%20sobre%20desenvolvimento%20de%20sites."
-            className="w-full sm:w-auto min-w-[240px]"
-          >
+          <GlowButton href={whatsappHref} className="w-full sm:w-auto min-w-[240px]">
             <TbBrandWhatsapp className="w-5 h-5" />
-            Falar no WhatsApp
+            {t.contact.whatsapp}
           </GlowButton>
 
           <motion.a

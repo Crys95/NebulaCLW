@@ -4,8 +4,11 @@ import { SectionTitles } from '@/app/components/section-title'
 import { GradientText } from '@/app/components/nebula/gradient-text'
 import { motion } from 'framer-motion'
 import { NebulaLogo } from '@/app/components/nebula/nebula-logo'
+import { useLanguage } from '@/app/contexts/language-context'
 
 export const NebulaAbout = () => {
+  const { t } = useLanguage()
+
   return (
     <section id="sobre" className="relative py-24 sm:py-32 bg-nebula-navy/50">
       <motion.div
@@ -18,8 +21,8 @@ export const NebulaAbout = () => {
       <div className="container relative grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <div>
           <SectionTitles
-            subtitle="sobre"
-            titlte="Por que Nebula?"
+            subtitle={t.about.subtitle}
+            titlte={t.about.title}
             className="mb-8"
           />
           <motion.div
@@ -30,23 +33,20 @@ export const NebulaAbout = () => {
             className="space-y-5 text-gray-300 leading-relaxed"
           >
             <p>
-              O nome <strong className="text-gray-100">Nebula</strong> carrega
-              uma ideia poderosa: um lugar onde tudo começa —{' '}
-              <GradientText as="span">criação</GradientText>,{' '}
-              <GradientText as="span">universo</GradientText> e{' '}
-              <GradientText as="span">inovação</GradientText> em constante
-              expansão.
+              {t.about.p1Before}
+              <strong className="text-gray-100">{t.about.p1Strong}</strong>
+              {t.about.p1After}
+              <GradientText as="span">{t.about.p1Creation}</GradientText>,{' '}
+              <GradientText as="span">{t.about.p1Universe}</GradientText>{' '}
+              {t.about.p1Joiner}{' '}
+              <GradientText as="span">{t.about.p1Innovation}</GradientText>
+              {t.about.p1End}
             </p>
+            <p>{t.about.p2}</p>
             <p>
-              Assim como uma nebulosa estelar forma novas estrelas, nós formamos
-              novos sites e experiências digitais para empresas que querem
-              crescer no universo online com tecnologia de ponta e design
-              impecável.
-            </p>
-            <p>
-              <span className="font-mono text-cyan-400/80">CLW</span> — Cloud
-              Log Web — representa nossa essência: soluções na nuvem, com lógica
-              sólida e presença web que impressiona.
+              <span className="font-mono text-cyan-400/80">CLW</span>
+              {t.about.p3CloudLogWeb}
+              {t.about.p3After}
             </p>
           </motion.div>
         </div>
@@ -60,9 +60,10 @@ export const NebulaAbout = () => {
         >
           <NebulaLogo
             src="/images/nebulasublog.png"
-            alt="Nebula CLW"
+            alt={t.about.logoAlt}
             width={400}
             height={400}
+            unblend
             wrapperClassName="w-full max-w-[380px]"
           />
         </motion.div>

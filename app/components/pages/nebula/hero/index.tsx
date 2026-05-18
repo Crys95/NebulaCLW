@@ -6,16 +6,17 @@ import { GradientText } from '@/app/components/nebula/gradient-text'
 import { motion } from 'framer-motion'
 import { NebulaLogo } from '@/app/components/nebula/nebula-logo'
 import { FloatingShipLogo } from '@/app/components/nebula/floating-ship-logo'
+import { useLanguage } from '@/app/contexts/language-context'
 import { Typewriter } from 'react-simple-typewriter'
 import { HiArrowNarrowDown } from 'react-icons/hi'
 
 const HERO_TITLE_CLASS =
   'font-display w-full min-w-0 max-w-full text-2xl font-semibold leading-tight break-words sm:text-4xl lg:text-5xl'
 
-/** Frase mais longa do typewriter — define a altura reservada do título. */
-const LONGEST_TYPEWRITER_PHRASE = 'criam novas possibilidades.'
-
 export const NebulaHero = () => {
+  const { t } = useLanguage()
+  const longestPhrase = t.hero.typewriter[2]
+
   return (
     <section
       id="inicio"
@@ -37,7 +38,7 @@ export const NebulaHero = () => {
           <FloatingShipLogo className="relative mb-8">
             <NebulaLogo
               src="/images/logonebula.png"
-              alt="Nebula CLW - Cloud Log Web"
+              alt={t.hero.logoAlt}
               width={420}
               height={420}
               priority
@@ -56,21 +57,15 @@ export const NebulaHero = () => {
             className={`${HERO_TITLE_CLASS} col-start-1 row-start-1 invisible pointer-events-none select-none`}
             aria-hidden
           >
-            <span>Desenvolvemos sites que </span>
-            <span className="inline-block max-w-full">
-              {LONGEST_TYPEWRITER_PHRASE}
-            </span>
+            <span>{t.hero.titlePrefix}</span>
+            <span className="inline-block max-w-full">{longestPhrase}</span>
           </p>
           <h1 className={`${HERO_TITLE_CLASS} col-start-1 row-start-1`}>
-            <span className="text-gray-100">Desenvolvemos sites que </span>
+            <span className="text-gray-100">{t.hero.titlePrefix}</span>
             <GradientText as="span" className="inline-block max-w-full align-top">
               <Typewriter
-                words={[
-                  'expandem seu universo.',
-                  'nascem da inovação.',
-                  'criam novas possibilidades.',
-                  'elevam sua marca.',
-                ]}
+                key={t.hero.typewriter.join('|')}
+                words={[...t.hero.typewriter]}
                 loop
                 cursor
                 cursorStyle="|"
@@ -88,9 +83,7 @@ export const NebulaHero = () => {
           transition={{ delay: 0.6, duration: 0.6 }}
           className="mt-6 text-gray-400 text-base sm:text-lg max-w-2xl leading-relaxed"
         >
-          A Nebula CLW transforma ideias em experiências digitais de alto
-          impacto. Criação, tecnologia futurista e expansão contínua — como uma
-          nebulosa que nunca para de crescer.
+          {t.hero.description}
         </motion.p>
 
         <motion.div
@@ -99,9 +92,9 @@ export const NebulaHero = () => {
           transition={{ delay: 0.75, duration: 0.6 }}
           className="mt-10 flex flex-col sm:flex-row gap-4"
         >
-          <GlowButton href="#contato">Iniciar um projeto</GlowButton>
+          <GlowButton href="#contato">{t.hero.ctaProject}</GlowButton>
           <GlowButton href="#servicos" variant="outline">
-            Conhecer serviços
+            {t.hero.ctaServices}
           </GlowButton>
         </motion.div>
 
@@ -111,7 +104,7 @@ export const NebulaHero = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
           className="mt-20 text-gray-500 hover:text-cyan-400 transition-colors"
-          aria-label="Rolar para sobre"
+          aria-label={t.hero.scrollToAbout}
         >
           <HiArrowNarrowDown className="w-8 h-8 animate-bounce mx-auto" />
         </motion.a>

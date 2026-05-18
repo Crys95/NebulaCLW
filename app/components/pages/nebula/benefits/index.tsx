@@ -1,6 +1,7 @@
 'use client'
 
 import { SectionTitles } from '@/app/components/section-title'
+import { useLanguage } from '@/app/contexts/language-context'
 import { motion } from 'framer-motion'
 import {
   TbBolt,
@@ -12,56 +13,17 @@ import {
   TbUsers,
   TbHeadset,
 } from 'react-icons/tb'
+import type { IconType } from 'react-icons'
 
-const benefits = [
-  {
-    icon: TbBolt,
-    title: 'Performance',
-    description:
-      'Site rápido que carrega em segundos. Visitantes não esperam — e o Google também recompensa velocidade.',
-  },
-  {
-    icon: TbLayout,
-    title: 'Layout profissional',
-    description:
-      'Design moderno e organizado que transmite credibilidade e coloca sua marca em evidência.',
-  },
-  {
-    icon: TbDeviceMobile,
-    title: 'Funciona em qualquer tela',
-    description:
-      'Experiência impecável no celular, tablet e computador. Seu cliente acessa de onde estiver.',
-  },
-  {
-    icon: TbSearch,
-    title: 'Visibilidade no Google',
-    description:
-      'Estrutura preparada para aparecer nas buscas quando alguém procura pelo que você oferece.',
-  },
-  {
-    icon: TbUsers,
-    title: 'Experiência clara',
-    description:
-      'Navegação intuitiva que guia o visitante até o contato, orçamento ou compra — sem confusão.',
-  },
-  {
-    icon: TbTrendingUp,
-    title: 'Foco em resultados',
-    description:
-      'Cada seção pensada para gerar leads, pedidos e oportunidades reais para o seu negócio.',
-  },
-  {
-    icon: TbShieldCheck,
-    title: 'Segurança e confiança',
-    description:
-      'Base sólida, estável e segura para você e para quem visita o seu site todos os dias.',
-  },
-  {
-    icon: TbHeadset,
-    title: 'Suporte contínuo',
-    description:
-      'Não abandonamos após o lançamento. Ajustes, melhorias e evolução conforme sua empresa cresce.',
-  },
+const benefitIcons: IconType[] = [
+  TbBolt,
+  TbLayout,
+  TbDeviceMobile,
+  TbSearch,
+  TbUsers,
+  TbTrendingUp,
+  TbShieldCheck,
+  TbHeadset,
 ]
 
 const container = {
@@ -78,12 +40,14 @@ const item = {
 }
 
 export const NebulaBenefits = () => {
+  const { t } = useLanguage()
+
   return (
     <section id="diferenciais" className="py-24 bg-nebula-navy/30">
       <div className="container">
         <SectionTitles
-          subtitle="diferenciais"
-          titlte="O que o seu site entrega"
+          subtitle={t.benefits.subtitle}
+          titlte={t.benefits.title}
           className="mb-6 text-center items-center"
         />
         <motion.p
@@ -92,8 +56,7 @@ export const NebulaBenefits = () => {
           viewport={{ once: true }}
           className="text-gray-400 text-center max-w-2xl mx-auto mb-14 text-sm sm:text-base"
         >
-          Falamos a língua do seu negócio: resultados que você vê e sente, sem
-          jargão técnico.
+          {t.benefits.intro}
         </motion.p>
 
         <motion.div
@@ -103,22 +66,25 @@ export const NebulaBenefits = () => {
           viewport={{ once: true, margin: '-60px' }}
           className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          {benefits.map((benefit) => (
-            <motion.article
-              key={benefit.title}
-              variants={item}
-              whileHover={{ y: -4 }}
-              className="glass-card p-6 group"
-            >
-              <benefit.icon className="w-9 h-9 text-purple-400 group-hover:text-cyan-400 transition-colors mb-4" />
-              <h4 className="text-lg font-semibold text-gray-100 mb-2">
-                {benefit.title}
-              </h4>
-              <p className="text-sm text-gray-400 leading-relaxed">
-                {benefit.description}
-              </p>
-            </motion.article>
-          ))}
+          {t.benefits.items.map((benefit, i) => {
+            const Icon = benefitIcons[i]
+            return (
+              <motion.article
+                key={i}
+                variants={item}
+                whileHover={{ y: -4 }}
+                className="glass-card p-6 group"
+              >
+                <Icon className="w-9 h-9 text-purple-400 group-hover:text-cyan-400 transition-colors mb-4" />
+                <h4 className="text-lg font-semibold text-gray-100 mb-2">
+                  {benefit.title}
+                </h4>
+                <p className="text-sm text-gray-400 leading-relaxed">
+                  {benefit.description}
+                </p>
+              </motion.article>
+            )
+          })}
         </motion.div>
       </div>
     </section>

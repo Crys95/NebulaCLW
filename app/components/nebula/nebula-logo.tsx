@@ -2,18 +2,24 @@
 
 import { cn } from '@/app/lib/utils'
 import Image, { ImageProps } from 'next/image'
+import { useState } from 'react'
 
 type NebulaLogoProps = Omit<ImageProps, 'src' | 'alt'> & {
-  src: '/images/logonebula.png' | '/images/nebulasublog.png'
+  src: '/images/logonebula.png' | '/images/nebulasublog.png' | '/images/nebulatexto.jpeg'
   alt?: string
   className?: string
   wrapperClassName?: string
   /** Brilho suave só nas áreas claras do PNG (sem caixa retangular). */
   glow?: boolean
+  /** Sem mix-blend — evita risgo/flash em JPEG com fundo preto. */
+  unblend?: boolean
+  /** Recorta borda esquerda do arquivo (artefato em alguns JPEGs). */
+  cropEdge?: boolean
 }
 
 const blendBySrc: Partial<Record<NebulaLogoProps['src'], string>> = {
   '/images/nebulasublog.png': 'mix-blend-screen',
+  '/images/nebulatexto.jpeg': 'mix-blend-screen',
 }
 
 export const NebulaLogo = ({
@@ -22,14 +28,17 @@ export const NebulaLogo = ({
   className,
   wrapperClassName,
   glow = false,
+  unblend = false,
+  cropEdge = false,
   ...props
 }: NebulaLogoProps) => {
-  const blend = blendBySrc[src]
+  const [loaded, setLoaded] = useState(false)
+  const blend = unblend ? undefined : blendBySrc[src]
 
   return (
     <div
       className={cn(
-        'relative flex items-center justify-center bg-transparent',
+        'relative flex items-center justify-center overflow-hidden bg-transparent',
         wrapperClassName,
       )}
     >
@@ -48,8 +57,11 @@ export const NebulaLogo = ({
       <Image
         src={src}
         alt={alt}
+        onLoadingComplete={() => setLoaded(true)}
         className={cn(
-          'relative z-10 h-auto w-full object-contain',
+          'relative z-10 h-auto w-full object-contain transition-opacity duration-500',
+          loaded ? 'opacity-100' : 'opacity-0',
+          cropEdge && '[clip-path:inset(0_0_0_4px)]',
           blend,
           className,
         )}

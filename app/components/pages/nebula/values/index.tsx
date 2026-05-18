@@ -1,35 +1,12 @@
 'use client'
 
 import { SectionTitles } from '@/app/components/section-title'
+import { useLanguage } from '@/app/contexts/language-context'
 import { motion } from 'framer-motion'
 import { TbSparkles, TbWorld, TbRocket, TbCpu } from 'react-icons/tb'
+import type { IconType } from 'react-icons'
 
-const pillars = [
-  {
-    icon: TbSparkles,
-    title: 'Criação',
-    description:
-      'Cada projeto nasce do zero, moldado à identidade da sua marca — único como uma nova estrela.',
-  },
-  {
-    icon: TbWorld,
-    title: 'Universo',
-    description:
-      'Pensamos grande. Sites preparados para escalar, alcançar novos mercados e expandir sem limites.',
-  },
-  {
-    icon: TbRocket,
-    title: 'Inovação',
-    description:
-      'Tecnologias modernas, performance e UX que colocam sua empresa à frente da concorrência.',
-  },
-  {
-    icon: TbCpu,
-    title: 'Futuro',
-    description:
-      'Design futurista, animações fluidas e arquitetura sólida para o digital de amanhã.',
-  },
-]
+const pillarIcons: IconType[] = [TbSparkles, TbWorld, TbRocket, TbCpu]
 
 const container = {
   hidden: { opacity: 0 },
@@ -45,12 +22,14 @@ const item = {
 }
 
 export const NebulaValues = () => {
+  const { t } = useLanguage()
+
   return (
     <section className="py-24 sm:py-32">
       <div className="container">
         <SectionTitles
-          subtitle="essência"
-          titlte="O que nos move"
+          subtitle={t.values.subtitle}
+          titlte={t.values.title}
           className="mb-16 text-center items-center"
         />
 
@@ -61,24 +40,27 @@ export const NebulaValues = () => {
           viewport={{ once: true, margin: '-80px' }}
           className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          {pillars.map((pillar) => (
-            <motion.article
-              key={pillar.title}
-              variants={item}
-              whileHover={{ y: -6 }}
-              className="glass-card p-6 group cursor-default"
-            >
-              <motion.div className="w-12 h-12 rounded-xl bg-nebula-gradient flex items-center justify-center mb-5 group-hover:shadow-nebula-soft transition-shadow">
-                <pillar.icon className="w-6 h-6 text-white" />
-              </motion.div>
-              <h4 className="text-lg font-semibold text-gray-100 mb-2">
-                {pillar.title}
-              </h4>
-              <p className="text-sm text-gray-400 leading-relaxed">
-                {pillar.description}
-              </p>
-            </motion.article>
-          ))}
+          {t.values.items.map((pillar, i) => {
+            const Icon = pillarIcons[i]
+            return (
+              <motion.article
+                key={i}
+                variants={item}
+                whileHover={{ y: -6 }}
+                className="glass-card p-6 group cursor-default"
+              >
+                <motion.div className="w-12 h-12 rounded-xl bg-nebula-gradient flex items-center justify-center mb-5 group-hover:shadow-nebula-soft transition-shadow">
+                  <Icon className="w-6 h-6 text-white" />
+                </motion.div>
+                <h4 className="text-lg font-semibold text-gray-100 mb-2">
+                  {pillar.title}
+                </h4>
+                <p className="text-sm text-gray-400 leading-relaxed">
+                  {pillar.description}
+                </p>
+              </motion.article>
+            )
+          })}
         </motion.div>
       </div>
     </section>

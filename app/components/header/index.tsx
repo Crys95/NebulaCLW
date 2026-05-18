@@ -3,20 +3,23 @@
 import Link from 'next/link'
 import { NebulaLogo } from '@/app/components/nebula/nebula-logo'
 import { NavItem } from './nav-item'
+import { LanguageSwitcher } from './language-switcher'
+import { useLanguage } from '@/app/contexts/language-context'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { HiMenu, HiX } from 'react-icons/hi'
 import { cn } from '@/app/lib/utils'
 
-const NavItens = [
-  { label: 'Início', href: '/#inicio' },
-  { label: 'Sobre', href: '/#sobre' },
-  { label: 'Serviços', href: '/#servicos' },
-  { label: 'Contato', href: '/#contato' },
-]
-
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false)
+  const { t } = useLanguage()
+
+  const navItems = [
+    { label: t.nav.home, href: '/#inicio' },
+    { label: t.nav.about, href: '/#sobre' },
+    { label: t.nav.services, href: '/#servicos' },
+    { label: t.nav.contact, href: '/#contato' },
+  ]
 
   return (
     <motion.header
@@ -25,13 +28,13 @@ export const Header = () => {
       transition={{ duration: 0.5 }}
       className="fixed top-0 w-full z-50 h-20 flex items-center justify-center border-b border-purple-500/10 bg-nebula-dark/80 backdrop-blur-lg"
     >
-      <motion.div className="container flex items-center justify-between">
-        <Link href="/#inicio" className="flex items-center gap-3">
+      <motion.div className="container flex items-center justify-between gap-4">
+        <Link href="/#inicio" className="flex items-center gap-3 min-w-0">
           <NebulaLogo
             width={48}
             height={48}
             src="/images/logonebula.png"
-            alt="Nebula CLW"
+            alt={t.footer.logoAlt}
             wrapperClassName="w-10 h-10 sm:w-12 sm:h-12 shrink-0"
             className="max-h-full"
           />
@@ -40,20 +43,26 @@ export const Header = () => {
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
-          {NavItens.map((item) => (
-            <NavItem {...item} key={item.label} />
-          ))}
-        </nav>
+        <div className="hidden md:flex items-center gap-6">
+          <nav className="flex items-center gap-8">
+            {navItems.map((item) => (
+              <NavItem {...item} key={item.href} />
+            ))}
+          </nav>
+          <LanguageSwitcher />
+        </div>
 
-        <button
-          type="button"
-          className="md:hidden text-gray-300 p-2"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
-        >
-          {menuOpen ? <HiX size={24} /> : <HiMenu size={24} />}
-        </button>
+        <motion.div className="flex md:hidden items-center gap-3">
+          <LanguageSwitcher />
+          <button
+            type="button"
+            className="text-gray-300 p-2"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? t.nav.closeMenu : t.nav.openMenu}
+          >
+            {menuOpen ? <HiX size={24} /> : <HiMenu size={24} />}
+          </button>
+        </motion.div>
       </motion.div>
 
       <motion.div
@@ -65,10 +74,10 @@ export const Header = () => {
         )}
       >
         <nav className="container py-4 flex flex-col gap-4">
-          {NavItens.map((item) => (
+          {navItems.map((item) => (
             <NavItem
               {...item}
-              key={item.label}
+              key={item.href}
               onClick={() => setMenuOpen(false)}
             />
           ))}

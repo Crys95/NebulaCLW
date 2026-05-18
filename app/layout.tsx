@@ -5,6 +5,7 @@ import { Header } from './components/header'
 import { ContactForm } from './components/contact'
 import { Footer } from './components/footer'
 import { BackTopTop } from './components/back-to-top'
+import { Providers } from './components/providers'
 import type { Metadata } from 'next'
 
 const inter = Inter({
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
     title: 'Nebula CLW | Desenvolvimento de Sites',
     description:
       'Sites que nascem da inovação e expandem como o universo. Cloud Log Web.',
-    images: ['/images/nebulasublog.png'],
+    images: ['/images/logonebula.png'],
   },
 }
 
@@ -58,11 +59,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       className={`${inter.variable} ${plexMono.variable} ${spaceGrotesk.variable}`}
     >
       <body>
-        <Header />
-        <main>{children}</main>
-        <ContactForm />
-        <Footer />
-        <BackTopTop />
+        <Providers>
+          <Header />
+          <main>{children}</main>
+          <ContactForm />
+          <Footer />
+          <BackTopTop />
+        </Providers>
       </body>
     </html>
   )
