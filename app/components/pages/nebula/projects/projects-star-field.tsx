@@ -6,7 +6,8 @@ import { SectionTitles } from '@/app/components/section-title'
 import { GlowButton } from '@/app/components/nebula/glow-button'
 import { ProjectStar } from './project-star'
 import { ProjectPreviewCard } from './project-preview-card'
-import { StarShape, type StarVariant } from './star-shape'
+import { RotatingStar } from './rotating-star'
+import type { StarVariant } from './star-shape'
 import { useLanguage } from '@/app/contexts/language-context'
 import { PROJECTS } from '@/app/lib/projects'
 import { getStarLayout } from '@/app/lib/project-star-layout'
@@ -19,12 +20,6 @@ function getStarVariant(id: ProjectId): StarVariant {
   return project?.inDevelopment ? 'comingSoon' : 'default'
 }
 
-function getStarGlowFilter(variant: StarVariant): string {
-  return variant === 'comingSoon'
-    ? 'drop-shadow(0 0 24px rgba(239, 68, 68, 0.85)) drop-shadow(0 0 40px rgba(220, 38, 38, 0.5))'
-    : 'drop-shadow(0 0 28px rgba(34, 211, 238, 0.85)) drop-shadow(0 0 48px rgba(124, 58, 237, 0.55))'
-}
-
 export const ProjectsStarField = () => {
   const { t } = useLanguage()
   const [hoveredId, setHoveredId] = useState<ProjectId | null>(null)
@@ -32,14 +27,14 @@ export const ProjectsStarField = () => {
   const fieldRef = useRef<HTMLDivElement>(null)
   const centerRef = useRef<HTMLDivElement>(null)
 
-  const activeId = pinnedId ?? hoveredId
   const isPinned = pinnedId !== null
-  const activeProject = activeId ? PROJECTS.find((p) => p.id === activeId) : null
-  const activeCopy = activeId ? t.projects.items[activeId] : null
-  const activeLayout = activeId
-    ? getStarLayout(activeId, PROJECTS.findIndex((p) => p.id === activeId), PROJECTS.length)
+  const previewId = isPinned ? pinnedId : hoveredId
+  const activeProject = previewId ? PROJECTS.find((p) => p.id === previewId) : null
+  const activeCopy = previewId ? t.projects.items[previewId] : null
+  const activeLayout = previewId
+    ? getStarLayout(previewId, PROJECTS.findIndex((p) => p.id === previewId), PROJECTS.length)
     : null
-  const activeVariant = activeId ? getStarVariant(activeId) : 'default'
+  const activeVariant = previewId ? getStarVariant(previewId) : 'default'
 
   const closeAll = () => {
     setPinnedId(null)
@@ -49,6 +44,16 @@ export const ProjectsStarField = () => {
   const handleHover = (id: ProjectId) => {
     if (pinnedId) return
     setHoveredId(id)
+  }
+
+  const handleLeave = (id: ProjectId) => {
+    if (pinnedId) return
+    setHoveredId((current) => (current === id ? null : current))
+  }
+
+  const handlePin = (id: ProjectId) => {
+    setPinnedId(id)
+    setHoveredId(null)
   }
 
   useEffect(() => {
@@ -65,18 +70,18 @@ export const ProjectsStarField = () => {
   }, [pinnedId])
 
   useEffect(() => {
-    if (!activeId) return
+    if (!previewId) return
 
     const onPointerDown = (e: PointerEvent) => {
       const target = e.target as Node
       if (fieldRef.current?.contains(target)) return
-      if (centerRef.current?.contains(target)) return
+      if (isPinned && centerRef.current?.contains(target)) return
       closeAll()
     }
 
     document.addEventListener('pointerdown', onPointerDown)
     return () => document.removeEventListener('pointerdown', onPointerDown)
-  }, [activeId])
+  }, [previewId, isPinned])
 
   return (
     <section
@@ -105,10 +110,7 @@ export const ProjectsStarField = () => {
 
       <div
         ref={fieldRef}
-        className={cn(
-          'relative mx-auto h-[min(72vh,720px)] w-full max-w-[1400px] px-4 sm:px-6',
-          activeId && !isPinned && 'z-[80]',
-        )}
+        className="relative z-[30] mx-auto h-[min(78vh,760px)] w-full max-w-[1400px] px-2 sm:px-6"
       >
         {PROJECTS.map((project, index) => {
           const layout = getStarLayout(project.id, index, PROJECTS.length)
@@ -120,13 +122,11 @@ export const ProjectsStarField = () => {
               projectId={project.id}
               copy={copy}
               layout={layout}
-              activeId={activeId}
-              isPinned={isPinned}
+              hoveredId={hoveredId}
+              pinnedId={pinnedId}
               onHover={handleHover}
-              onPin={(id) => {
-                setPinnedId(id)
-                setHoveredId(id)
-              }}
+              onLeave={handleLeave}
+              onPin={handlePin}
             />
           )
         })}
@@ -147,37 +147,38 @@ export const ProjectsStarField = () => {
       </AnimatePresence>
 
       <div className="pointer-events-none fixed inset-0 z-[70] flex items-center justify-center p-4 pt-20 sm:pt-24">
-        <AnimatePresence>
-          {activeId && activeProject && activeCopy && activeLayout && (
+        <AnimatePresence mode="wait">
+          {previewId && activeProject && activeCopy && (
             <motion.div
-              key={activeId}
-              ref={centerRef}
-              className="pointer-events-auto flex max-h-[90vh] flex-col items-center overflow-y-auto"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              onClick={(e) => e.stopPropagation()}
+              key={previewId}
+              ref={isPinned ? centerRef : undefined}
+              className={cn(
+                'flex max-h-[90vh] flex-col items-center overflow-y-auto',
+                isPinned && 'pointer-events-auto',
+              )}
+              initial={{ opacity: 0, scale: 0.92, y: 16 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.94, y: 12 }}
+              transition={{ duration: 0.2, ease: 'easeOut' }}
+              onClick={(e) => isPinned && e.stopPropagation()}
             >
-              <motion.div
-                key={`star-${activeId}`}
-                className="mb-5 flex shrink-0 items-center justify-center"
-                initial={{ scale: 0.4, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.6, opacity: 0 }}
-                transition={{ type: 'spring', stiffness: 320, damping: 26 }}
-              >
-                <div style={{ filter: getStarGlowFilter(activeVariant) }}>
-                  <StarShape
-                    size={Math.min(activeLayout.size * 1.5, 88)}
+              {isPinned && activeLayout && (
+                <motion.div
+                  className="mb-5 flex shrink-0 items-center justify-center"
+                  initial={{ scale: 0.5, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ type: 'spring', stiffness: 320, damping: 26 }}
+                >
+                  <RotatingStar
+                    size={Math.min(activeLayout.size * 1.55, 96)}
                     active
                     variant={activeVariant}
+                    rotationDuration={18}
                   />
-                </div>
-              </motion.div>
+                </motion.div>
+              )}
 
               <ProjectPreviewCard
-                key={`card-${activeId}`}
                 project={activeProject}
                 copy={activeCopy}
                 viewLabel={

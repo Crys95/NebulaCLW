@@ -186,8 +186,8 @@ export const pt = {
     title: 'Portfólio em órbita',
     intro:
       'Cada estrela é um projeto nosso em órbita. Passe o mouse para revelar, clique para fixar na tela e clique fora para voltar a flutuar.',
-    starHint: 'Passe o mouse sobre uma estrela',
-    starClickHint: 'Clique para fixar · clique fora para soltar',
+    starHint: 'Passe o mouse na estrela para ver o projeto',
+    starClickHint: 'Clique na estrela para fixar · clique fora para fechar',
     viewProject: 'Ver projeto',
     viewSite: 'Visitar site',
     comingSoon: 'Em breve',

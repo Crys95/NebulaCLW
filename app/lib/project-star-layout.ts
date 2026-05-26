@@ -34,7 +34,7 @@ export function getStarLayout(id: ProjectId, index: number, total: number): Star
     id,
     startX,
     startY,
-    size: 44 + (h % 36),
+    size: 52 + (h % 40),
     duration: 28 + (h % 22),
     delay: (h % 10) * 0.4,
     path: {

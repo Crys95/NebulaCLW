@@ -5,8 +5,8 @@ import Particles from 'react-particles'
 import { loadSlim } from 'tsparticles-slim'
 import type { ISourceOptions } from 'tsparticles-engine'
 
-const DESKTOP_PARTICLES = 200
-const MOBILE_PARTICLES = 75
+const DESKTOP_PARTICLES = 100
+const MOBILE_PARTICLES = 38
 const MOBILE_BREAKPOINT = 768
 
 function useParticleCount() {

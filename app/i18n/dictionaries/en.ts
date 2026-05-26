@@ -186,8 +186,8 @@ export const en = {
     title: 'Portfolio in orbit',
     intro:
       'Each star is one of our projects in orbit. Hover to reveal, click to pin on screen, click outside to float again.',
-    starHint: 'Hover over a star',
-    starClickHint: 'Click to pin · click outside to release',
+    starHint: 'Hover a star to preview the project',
+    starClickHint: 'Click the star to pin · click outside to close',
     viewProject: 'View project',
     viewSite: 'Visit site',
     comingSoon: 'Coming soon',
