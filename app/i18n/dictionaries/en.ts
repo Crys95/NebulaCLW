@@ -2,7 +2,10 @@ export const en = {
   nav: {
     home: 'Home',
     about: 'About',
+    values: 'Essence',
     services: 'Services',
+    process: 'Process',
+    benefits: 'Benefits',
     contact: 'Contact',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
@@ -181,9 +184,46 @@ export const en = {
     title: 'Let’s create something extraordinary?',
     description:
       'Tell us about your project. We respond with the same energy as an expanding nebula.',
+    intro:
+      'Whether you need a corporate site, landing page, or e-commerce — our team is ready to map goals, timeline, and budget clearly, from first contact to launch.',
+    channelsTitle: 'Contact channels',
+    channels: [
+      {
+        label: 'WhatsApp',
+        value: '+55 (11) 99999-9999',
+        hint: 'Quick replies during business hours',
+      },
+      {
+        label: 'Email',
+        value: 'contato@nebulaclw.com.br',
+        hint: 'Proposals and detailed documentation',
+      },
+      {
+        label: 'Hours',
+        value: 'Mon–Fri, 9am–6pm',
+        hint: 'Brasília time (GMT-3)',
+      },
+    ],
+    checklistTitle: 'What to include in your message',
+    checklist: [
+      'Type of site or digital product you need',
+      'Main goal (sales, leads, branding)',
+      'Ideal timeline and visual references',
+      'Whether you already have domain, content, or brand assets',
+    ],
+    ctaTitle: 'Ready for liftoff?',
+    ctaText:
+      'Start the conversation on WhatsApp and get a tailored reply. No long forms — straight to the point.',
     whatsapp: 'Chat on WhatsApp',
     whatsappMessage:
       'Hello Nebula CLW! I would like to know more about website development.',
+    emailCta: 'Send email',
+    trust: [
+      'Reply within 24 hours',
+      'No-obligation quote',
+      'Support in Portuguese and English',
+    ],
+    servicesLink: 'View our services',
   },
   footer: {
     tagline: 'Cloud Log Web',

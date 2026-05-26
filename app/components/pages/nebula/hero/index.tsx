@@ -1,6 +1,5 @@
 'use client'
 
-import { NebulaParticles } from '@/app/components/particles/NebulaParticles'
 import { GlowButton } from '@/app/components/nebula/glow-button'
 import { GradientText } from '@/app/components/nebula/gradient-text'
 import { motion } from 'framer-motion'
@@ -8,7 +7,7 @@ import { NebulaLogo } from '@/app/components/nebula/nebula-logo'
 import { FloatingShipLogo } from '@/app/components/nebula/floating-ship-logo'
 import { useLanguage } from '@/app/contexts/language-context'
 import { Typewriter } from 'react-simple-typewriter'
-import { HiArrowNarrowDown } from 'react-icons/hi'
+import { ROUTES } from '@/app/lib/routes'
 
 const HERO_TITLE_CLASS =
   'font-display w-full min-w-0 max-w-full text-2xl font-semibold leading-tight break-words sm:text-4xl lg:text-5xl'
@@ -20,15 +19,8 @@ export const NebulaHero = () => {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-28 pb-20"
+      className="section-anchor relative flex min-h-screen flex-col justify-center overflow-hidden pb-20 pt-28"
     >
-      <NebulaParticles />
-      <motion.div
-        className="absolute inset-0 bg-cosmic-mesh opacity-60 pointer-events-none"
-        animate={{ opacity: [0.4, 0.7, 0.4] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-      />
-
       <div className="container relative z-10 flex w-full min-w-0 flex-col items-center text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -92,22 +84,11 @@ export const NebulaHero = () => {
           transition={{ delay: 0.75, duration: 0.6 }}
           className="mt-10 flex flex-col sm:flex-row gap-4"
         >
-          <GlowButton href="#contato">{t.hero.ctaProject}</GlowButton>
-          <GlowButton href="#servicos" variant="outline">
+          <GlowButton href={ROUTES.contato}>{t.hero.ctaProject}</GlowButton>
+          <GlowButton href={ROUTES.servicos} variant="outline">
             {t.hero.ctaServices}
           </GlowButton>
         </motion.div>
-
-        <motion.a
-          href="#sobre"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-          className="mt-20 text-gray-500 hover:text-cyan-400 transition-colors"
-          aria-label={t.hero.scrollToAbout}
-        >
-          <HiArrowNarrowDown className="w-8 h-8 animate-bounce mx-auto" />
-        </motion.a>
       </div>
     </section>
   )

@@ -1,6 +1,8 @@
 'use client'
 
 import { SectionTitles } from '@/app/components/section-title'
+import { SpaceCard } from '@/app/components/nebula/space-card'
+import { SpaceSection } from '@/app/components/nebula/space-section'
 import { useLanguage } from '@/app/contexts/language-context'
 import { motion } from 'framer-motion'
 import {
@@ -43,50 +45,49 @@ export const NebulaBenefits = () => {
   const { t } = useLanguage()
 
   return (
-    <section id="diferenciais" className="py-24 bg-nebula-navy/30">
-      <div className="container">
-        <SectionTitles
-          subtitle={t.benefits.subtitle}
-          titlte={t.benefits.title}
-          className="mb-6 text-center items-center"
-        />
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-gray-400 text-center max-w-2xl mx-auto mb-14 text-sm sm:text-base"
-        >
-          {t.benefits.intro}
-        </motion.p>
+    <SpaceSection id="diferenciais" className="bg-nebula-navy/30">
+      <SectionTitles
+        subtitle={t.benefits.subtitle}
+        titlte={t.benefits.title}
+        className="mb-6 items-center text-center"
+      />
+      <motion.p
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mx-auto mb-14 max-w-2xl text-center text-sm text-gray-400 sm:text-base"
+      >
+        {t.benefits.intro}
+      </motion.p>
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-60px' }}
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {t.benefits.items.map((benefit, i) => {
-            const Icon = benefitIcons[i]
-            return (
-              <motion.article
-                key={i}
-                variants={item}
-                whileHover={{ y: -4 }}
-                className="glass-card p-6 group"
-              >
-                <Icon className="w-9 h-9 text-purple-400 group-hover:text-cyan-400 transition-colors mb-4" />
-                <h4 className="text-lg font-semibold text-gray-100 mb-2">
-                  {benefit.title}
-                </h4>
-                <p className="text-sm text-gray-400 leading-relaxed">
-                  {benefit.description}
-                </p>
-              </motion.article>
-            )
-          })}
-        </motion.div>
-      </div>
-    </section>
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: '-60px' }}
+        className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+      >
+        {t.benefits.items.map((benefit, i) => {
+          const Icon = benefitIcons[i]
+          return (
+            <SpaceCard
+              key={i}
+              variants={item}
+              floatDelay={i * 0.15}
+              icon={
+                <Icon className="h-9 w-9 text-purple-400 transition-colors group-hover:text-cyan-400" />
+              }
+            >
+              <h4 className="mb-2 text-lg font-semibold text-gray-100">
+                {benefit.title}
+              </h4>
+              <p className="text-sm leading-relaxed text-gray-400">
+                {benefit.description}
+              </p>
+            </SpaceCard>
+          )
+        })}
+      </motion.div>
+    </SpaceSection>
   )
 }

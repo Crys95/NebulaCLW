@@ -2,10 +2,10 @@ import { Inter, IBM_Plex_Mono, Space_Grotesk } from 'next/font/google'
 import './globals.css'
 import { ReactNode } from 'react'
 import { Header } from './components/header'
-import { ContactForm } from './components/contact'
 import { Footer } from './components/footer'
 import { BackTopTop } from './components/back-to-top'
 import { Providers } from './components/providers'
+import { SpaceBackground } from './components/nebula/space-background'
 import type { Metadata } from 'next'
 
 const inter = Inter({
@@ -60,11 +60,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     >
       <body>
         <Providers>
+          <SpaceBackground />
           <Header />
-          <main>{children}</main>
-          <ContactForm />
-          <Footer />
-          <BackTopTop />
+          <main className="relative z-10">{children}</main>
+          <div className="relative z-10">
+            <Footer />
+            <BackTopTop />
+          </div>
         </Providers>
       </body>
     </html>

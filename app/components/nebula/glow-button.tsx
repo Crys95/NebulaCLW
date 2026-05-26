@@ -3,6 +3,7 @@
 import { cn } from '@/app/lib/utils'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { ROUTES } from '@/app/lib/routes'
 
 type GlowButtonProps = {
   href?: string
@@ -12,7 +13,7 @@ type GlowButtonProps = {
 }
 
 export const GlowButton = ({
-  href = '#contato',
+  href = ROUTES.contato,
   variant = 'primary',
   children,
   className,
