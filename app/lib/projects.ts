@@ -1,4 +1,8 @@
-export type ProjectId = 'best-mile' | 'portal-passarinheiros' | 'antidoping-eat'
+export type ProjectId =
+  | 'best-mile'
+  | 'portal-passarinheiros'
+  | 'antidoping-eat'
+  | 'portfolio-crystyan'
 
 export type ProjectMeta = {
   id: ProjectId
@@ -51,6 +55,20 @@ export const PROJECTS: ProjectMeta[] = [
     featured: true,
     external: false,
     inDevelopment: true,
+  },
+  {
+    id: 'portfolio-crystyan',
+    href: 'https://portfolio-lkpu6atg6-crys95s-projects.vercel.app/',
+    image: '/images/projetos/portifolio-crystyan.png',
+    tech: [
+      'Portfólio web',
+      'Apresentação profissional',
+      'Design responsivo',
+      'Vitrine de projetos',
+      'Experiência para recrutadores',
+    ],
+    featured: true,
+    external: true,
   },
 ]
 

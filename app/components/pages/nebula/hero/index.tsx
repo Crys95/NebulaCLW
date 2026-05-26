@@ -1,14 +1,12 @@
 'use client'
 
-import { GlowButton } from '@/app/components/nebula/glow-button'
 import { GradientText } from '@/app/components/nebula/gradient-text'
+import { HeroQuickNav } from '@/app/components/pages/nebula/hero/hero-quick-nav'
 import { motion } from 'framer-motion'
 import { NebulaLogo } from '@/app/components/nebula/nebula-logo'
 import { FloatingShipLogo } from '@/app/components/nebula/floating-ship-logo'
 import { useLanguage } from '@/app/contexts/language-context'
 import { Typewriter } from 'react-simple-typewriter'
-import { ROUTES } from '@/app/lib/routes'
-
 const HERO_TITLE_CLASS =
   'font-display w-full min-w-0 max-w-full text-2xl font-semibold leading-tight break-words sm:text-4xl lg:text-5xl'
 
@@ -19,7 +17,7 @@ export const NebulaHero = () => {
   return (
     <section
       id="inicio"
-      className="section-anchor relative flex min-h-screen flex-col justify-center overflow-hidden pb-20 pt-28"
+      className="section-anchor relative flex min-h-screen flex-col justify-center overflow-hidden pb-24 pt-28"
     >
       <div className="container relative z-10 flex w-full min-w-0 flex-col items-center text-center">
         <motion.div
@@ -78,20 +76,7 @@ export const NebulaHero = () => {
           {t.hero.description}
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.75, duration: 0.6 }}
-          className="mt-10 flex flex-col flex-wrap items-center justify-center gap-4 sm:flex-row"
-        >
-          <GlowButton href={ROUTES.contato}>{t.hero.ctaProject}</GlowButton>
-          <GlowButton href={ROUTES.projetos} variant="outline">
-            {t.hero.ctaProjects}
-          </GlowButton>
-          <GlowButton href={ROUTES.servicos} variant="outline">
-            {t.hero.ctaServices}
-          </GlowButton>
-        </motion.div>
+        <HeroQuickNav />
       </div>
     </section>
   )

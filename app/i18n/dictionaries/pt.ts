@@ -24,6 +24,17 @@ export const pt = {
     ctaProject: 'Iniciar um projeto',
     ctaServices: 'Conhecer serviços',
     ctaProjects: 'Ver projetos',
+    exploreTitle: 'Por onde começar?',
+    exploreSubtitle: 'Escolha um destino e explore cada parte do nosso universo digital.',
+    navHints: {
+      about: 'Quem somos e por que Nebula',
+      values: 'Valores e essência da marca',
+      services: 'Sites, apps e soluções',
+      process: 'Como levamos sua ideia ao ar',
+      benefits: 'O que nos torna únicos',
+      projects: 'Portfólio em constelação',
+      contact: 'WhatsApp e início de projeto',
+    },
     scrollToAbout: 'Rolar para sobre',
     logoAlt: 'Nebula CLW - Cloud Log Web',
   },
@@ -215,6 +226,12 @@ export const pt = {
         category: 'Em desenvolvimento',
         description:
           'Solução integrada que digitaliza e blinda a cadeia de custódia antidoping, unindo o controle logístico das baias via sistema desktop à rastreabilidade fotográfica e coleta de assinaturas pelo aplicativo mobile.',
+      },
+      'portfolio-crystyan': {
+        title: 'Portfólio Profissional',
+        category: 'Site · Portfólio · TI',
+        description:
+          'Desenvolvimento de portfólio digital para profissionais de tecnologia: trajetória, competências e projetos em uma vitrine clara, rápida e responsiva — pensada para causar boa impressão em recrutadores, clientes e parceiros.',
       },
     },
   },

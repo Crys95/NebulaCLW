@@ -24,6 +24,17 @@ export const en = {
     ctaProject: 'Start a project',
     ctaServices: 'Explore services',
     ctaProjects: 'View projects',
+    exploreTitle: 'Where to start?',
+    exploreSubtitle: 'Pick a destination and explore every part of our digital universe.',
+    navHints: {
+      about: 'Who we are and why Nebula',
+      values: 'Brand values and essence',
+      services: 'Websites, apps, and solutions',
+      process: 'How we bring your idea to life',
+      benefits: 'What makes us stand out',
+      projects: 'Portfolio among the stars',
+      contact: 'WhatsApp and project kickoff',
+    },
     scrollToAbout: 'Scroll to about',
     logoAlt: 'Nebula CLW - Cloud Log Web',
   },
@@ -215,6 +226,12 @@ export const en = {
         category: 'In development',
         description:
           'Integrated solution that digitizes and secures the anti-doping chain of custody, combining desktop bay logistics control with photo traceability and signature capture via the mobile app.',
+      },
+      'portfolio-crystyan': {
+        title: 'Professional Portfolio',
+        category: 'Website · Portfolio · Tech',
+        description:
+          'Digital portfolio for technology professionals: career story, skills, and projects in a clear, fast, responsive showcase — built to make a strong impression on recruiters, clients, and partners.',
       },
     },
   },
