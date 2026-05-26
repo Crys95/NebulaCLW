@@ -22,6 +22,7 @@ export const Header = () => {
     { label: t.nav.services, href: ROUTES.servicos },
     { label: t.nav.process, href: ROUTES.processo },
     { label: t.nav.benefits, href: ROUTES.diferenciais },
+    { label: t.nav.projects, href: ROUTES.projetos },
     { label: t.nav.contact, href: ROUTES.contato },
   ]
 

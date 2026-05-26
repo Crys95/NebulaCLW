@@ -82,9 +82,12 @@ export const NebulaHero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.75, duration: 0.6 }}
-          className="mt-10 flex flex-col sm:flex-row gap-4"
+          className="mt-10 flex flex-col flex-wrap items-center justify-center gap-4 sm:flex-row"
         >
           <GlowButton href={ROUTES.contato}>{t.hero.ctaProject}</GlowButton>
+          <GlowButton href={ROUTES.projetos} variant="outline">
+            {t.hero.ctaProjects}
+          </GlowButton>
           <GlowButton href={ROUTES.servicos} variant="outline">
             {t.hero.ctaServices}
           </GlowButton>

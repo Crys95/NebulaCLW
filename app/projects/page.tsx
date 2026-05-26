@@ -1,11 +1,5 @@
-import { PageIntro } from '../components/pages/projects/page-intro'
-import { ProjectsList } from '../components/pages/projects/projects-list'
+import { redirect } from 'next/navigation'
 
-export default function project() {
-  return (
-    <>
-      <PageIntro />
-      <ProjectsList />
-    </>
-  )
+export default function ProjectsRedirect() {
+  redirect('/projetos')
 }

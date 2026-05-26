@@ -3,7 +3,7 @@
 import { SectionTitles } from '../section-title'
 import {
   TbBrandWhatsapp,
-  TbMail,
+  // TbMail,
   TbClock,
   TbCheck,
   TbRocket,
@@ -17,14 +17,14 @@ import { useLanguage } from '@/app/contexts/language-context'
 import { ROUTES } from '@/app/lib/routes'
 import type { IconType } from 'react-icons'
 
-const CHANNEL_ICONS: IconType[] = [TbBrandWhatsapp, TbMail, TbClock]
+const CHANNEL_ICONS: IconType[] = [TbBrandWhatsapp, TbClock]
 const TRUST_ICONS: IconType[] = [TbClock, TbShieldCheck, TbRocket]
 
-const EMAIL = 'contato@nebulaclw.com.br'
-const WHATSAPP_NUMBER = '5511999999999'
+// const EMAIL = 'contato@nebulaclw.com.br'
+const WHATSAPP_NUMBER = '5511958035016'
 
 export const ContactForm = () => {
-  const { locale, t } = useLanguage()
+  const { t } = useLanguage()
 
   const whatsappHref =
     'https://wa.me/' +
@@ -32,13 +32,13 @@ export const ContactForm = () => {
     '?text=' +
     encodeURIComponent(t.contact.whatsappMessage)
 
-  const mailtoHref =
-    'mailto:' +
-    EMAIL +
-    '?subject=' +
-    encodeURIComponent(
-      locale === 'pt' ? 'Projeto Nebula CLW' : 'Nebula CLW project',
-    )
+  // const mailtoHref =
+  //   'mailto:' +
+  //   EMAIL +
+  //   '?subject=' +
+  //   encodeURIComponent(
+  //     locale === 'pt' ? 'Projeto Nebula CLW' : 'Nebula CLW project',
+  //   )
 
   return (
     <SpaceSection id="contato" className="min-h-[calc(100dvh-5rem)] py-28 sm:py-32">
@@ -80,9 +80,9 @@ export const ContactForm = () => {
             </h4>
 
             {t.contact.channels.map((channel, i) => {
-              const Icon = CHANNEL_ICONS[i] ?? TbMail
+              const Icon = CHANNEL_ICONS[i] ?? TbClock
               const isWhatsapp = i === 0
-              const isEmail = i === 1
+              // const isEmail = i === 1
 
               return (
                 <SpaceCard key={channel.label} floatDelay={i * 0.2} className="p-5">
@@ -101,16 +101,10 @@ export const ContactForm = () => {
                         >
                           {channel.value}
                         </a>
-                      ) : isEmail ? (
-                        <a
-                          href={mailtoHref}
-                          className="mt-1 block break-all font-medium text-gray-100 transition-colors hover:text-cyan-400"
-                        >
-                          {channel.value}
-                        </a>
                       ) : (
                         <p className="mt-1 font-medium text-gray-100">{channel.value}</p>
                       )}
+                      {/* E-mail desativado — ver bloco comentado em i18n e botão abaixo */}
                       <p className="mt-1 text-xs text-gray-500">{channel.hint}</p>
                     </div>
                   </div>
@@ -176,10 +170,10 @@ export const ContactForm = () => {
                   <TbBrandWhatsapp className="h-5 w-5" />
                   {t.contact.whatsapp}
                 </GlowButton>
-                <GlowButton href={mailtoHref} variant="outline" className="w-full sm:w-auto">
+                {/* <GlowButton href={mailtoHref} variant="outline" className="w-full sm:w-auto">
                   <TbMail className="h-5 w-5" />
                   {t.contact.emailCta}
-                </GlowButton>
+                </GlowButton> */}
                 <GlowButton
                   href={ROUTES.servicos}
                   variant="outline"

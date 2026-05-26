@@ -6,6 +6,7 @@ export const pt = {
     services: 'Serviços',
     process: 'Processo',
     benefits: 'Diferenciais',
+    projects: 'Projetos',
     contact: 'Contato',
     openMenu: 'Abrir menu',
     closeMenu: 'Fechar menu',
@@ -22,6 +23,7 @@ export const pt = {
       'A Nebula CLW transforma ideias em experiências digitais de alto impacto. Criação, tecnologia futurista e expansão contínua — como uma nebulosa que nunca para de crescer.',
     ctaProject: 'Iniciar um projeto',
     ctaServices: 'Conhecer serviços',
+    ctaProjects: 'Ver projetos',
     scrollToAbout: 'Rolar para sobre',
     logoAlt: 'Nebula CLW - Cloud Log Web',
   },
@@ -179,6 +181,43 @@ export const pt = {
       },
     ],
   },
+  projects: {
+    subtitle: 'projetos',
+    title: 'Portfólio em órbita',
+    intro:
+      'Cada estrela é um projeto nosso em órbita. Passe o mouse para revelar, clique para fixar na tela e clique fora para voltar a flutuar.',
+    starHint: 'Passe o mouse sobre uma estrela',
+    starClickHint: 'Clique para fixar · clique fora para soltar',
+    viewProject: 'Ver projeto',
+    viewSite: 'Visitar site',
+    comingSoon: 'Em breve',
+    inDevelopment: 'Em desenvolvimento',
+    techLabel: 'Stack',
+    ctaText: 'Quer um projeto assim para sua marca?',
+    ctaButton: 'Iniciar conversa',
+    items: {
+      'best-mile': {
+        title: 'Best Mile',
+        category: 'App mobile · Logística',
+        description:
+          'Aplicativo para gestão de romaneios do pedido à entrega, com assinatura digital pós-entrega e validação, geração de etiquetas via leitura de código de barras e lançamento com reconhecimento interno pelo impacto operacional.',
+        storesNote:
+          'Já disponível na Google Play e na App Store.',
+      },
+      'portal-passarinheiros': {
+        title: 'Portal Passarinheiros',
+        category: 'Portal digital · Aves',
+        description:
+          'Plataforma digital de revistas e vídeos sobre pássaros das mais diversas raças, com documentários, dicas de saúde, podcasts com criadores e conteúdo completo sobre o universo das aves.',
+      },
+      'antidoping-eat': {
+        title: 'Sistema Antidoping EAT',
+        category: 'Em desenvolvimento',
+        description:
+          'Solução integrada que digitaliza e blinda a cadeia de custódia antidoping, unindo o controle logístico das baias via sistema desktop à rastreabilidade fotográfica e coleta de assinaturas pelo aplicativo mobile.',
+      },
+    },
+  },
   contact: {
     subtitle: 'contato',
     title: 'Vamos criar algo extraordinário?',
@@ -190,14 +229,14 @@ export const pt = {
     channels: [
       {
         label: 'WhatsApp',
-        value: '(11) 99999-9999',
+        value: '+55 11 95803-5016',
         hint: 'Resposta rápida em horário comercial',
       },
-      {
-        label: 'E-mail',
-        value: 'contato@nebulaclw.com.br',
-        hint: 'Propostas e documentação detalhada',
-      },
+      // {
+      //   label: 'E-mail',
+      //   value: 'contato@nebulaclw.com.br',
+      //   hint: 'Propostas e documentação detalhada',
+      // },
       {
         label: 'Horário',
         value: 'Seg–Sex, 9h às 18h',
@@ -217,7 +256,7 @@ export const pt = {
     whatsapp: 'Falar no WhatsApp',
     whatsappMessage:
       'Olá Nebula CLW! Gostaria de saber mais sobre desenvolvimento de sites.',
-    emailCta: 'Enviar e-mail',
+    // emailCta: 'Enviar e-mail',
     trust: [
       'Retorno em até 24 horas',
       'Orçamento sem compromisso',

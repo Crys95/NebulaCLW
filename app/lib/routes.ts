@@ -5,6 +5,7 @@ export const ROUTES = {
   servicos: '/servicos',
   processo: '/processo',
   diferenciais: '/diferenciais',
+  projetos: '/projetos',
   contato: '/contato',
 } as const
 

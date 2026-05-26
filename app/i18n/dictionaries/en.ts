@@ -6,6 +6,7 @@ export const en = {
     services: 'Services',
     process: 'Process',
     benefits: 'Benefits',
+    projects: 'Projects',
     contact: 'Contact',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
@@ -22,6 +23,7 @@ export const en = {
       'Nebula CLW turns ideas into high-impact digital experiences. Creation, futuristic technology, and continuous expansion — like a nebula that never stops growing.',
     ctaProject: 'Start a project',
     ctaServices: 'Explore services',
+    ctaProjects: 'View projects',
     scrollToAbout: 'Scroll to about',
     logoAlt: 'Nebula CLW - Cloud Log Web',
   },
@@ -179,6 +181,43 @@ export const en = {
       },
     ],
   },
+  projects: {
+    subtitle: 'projects',
+    title: 'Portfolio in orbit',
+    intro:
+      'Each star is one of our projects in orbit. Hover to reveal, click to pin on screen, click outside to float again.',
+    starHint: 'Hover over a star',
+    starClickHint: 'Click to pin · click outside to release',
+    viewProject: 'View project',
+    viewSite: 'Visit site',
+    comingSoon: 'Coming soon',
+    inDevelopment: 'In development',
+    techLabel: 'Stack',
+    ctaText: 'Want a project like this for your brand?',
+    ctaButton: 'Start a conversation',
+    items: {
+      'best-mile': {
+        title: 'Best Mile',
+        category: 'Mobile app · Logistics',
+        description:
+          'App for managing delivery manifests from order to drop-off, with post-delivery digital signature and validation, label generation via barcode scanning, and an internal launch recognized for operational impact.',
+        storesNote:
+          'Already available on Google Play and the App Store.',
+      },
+      'portal-passarinheiros': {
+        title: 'Portal Passarinheiros',
+        category: 'Digital portal · Birds',
+        description:
+          'Digital platform for magazines and videos about birds of many breeds, with documentaries, health tips, podcasts with breeders, and rich content about the fascinating world of aviculture.',
+      },
+      'antidoping-eat': {
+        title: 'Antidoping EAT System',
+        category: 'In development',
+        description:
+          'Integrated solution that digitizes and secures the anti-doping chain of custody, combining desktop bay logistics control with photo traceability and signature capture via the mobile app.',
+      },
+    },
+  },
   contact: {
     subtitle: 'contact',
     title: 'Let’s create something extraordinary?',
@@ -190,14 +229,14 @@ export const en = {
     channels: [
       {
         label: 'WhatsApp',
-        value: '+55 (11) 99999-9999',
+        value: '+55 11 95803-5016',
         hint: 'Quick replies during business hours',
       },
-      {
-        label: 'Email',
-        value: 'contato@nebulaclw.com.br',
-        hint: 'Proposals and detailed documentation',
-      },
+      // {
+      //   label: 'Email',
+      //   value: 'contato@nebulaclw.com.br',
+      //   hint: 'Proposals and detailed documentation',
+      // },
       {
         label: 'Hours',
         value: 'Mon–Fri, 9am–6pm',
@@ -217,7 +256,7 @@ export const en = {
     whatsapp: 'Chat on WhatsApp',
     whatsappMessage:
       'Hello Nebula CLW! I would like to know more about website development.',
-    emailCta: 'Send email',
+    // emailCta: 'Send email',
     trust: [
       'Reply within 24 hours',
       'No-obligation quote',
